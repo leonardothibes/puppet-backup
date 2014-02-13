@@ -1,0 +1,4 @@
+class backup::ftp
+{
+
+}

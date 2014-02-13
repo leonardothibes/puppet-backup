@@ -5,17 +5,8 @@ A puppet module to manage backups.
 
 ## Sample Usage
 Install backup and use the provided configuration defaults:
-```puppet
-node default {
-	class {'backup':}
-}
-```
-or
-```puppet
-node default {
-	include backup
-}
-```
+
+
 
 Uninstall backup:
 ```puppet

@@ -1,4 +1,4 @@
-class backup::base
+class backup::simple
 {
 
 }

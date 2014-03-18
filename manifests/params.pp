@@ -1,7 +1,7 @@
 class backup::params
 {
-	$directory = "/backups"
-	$packages  = [
+	$endpoint   = "/backups"
+	$compactors = [
 		'tar',
 		'gzip',
 		'bzip2',

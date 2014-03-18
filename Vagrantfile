@@ -79,6 +79,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder ".", "/etc/puppet/modules/backup"
   config.vm.provision "shell", inline: "
 	apt-get update > /dev/null
+	[ -d /etc/puppet/modules/crontab ] || puppet module install leonardothibes-crontab
   "
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "tests"

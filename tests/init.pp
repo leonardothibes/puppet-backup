@@ -9,4 +9,12 @@
 # Learn more about module testing here:
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
-include backup
+backup::simple {'backup of /tmp directory':
+	from => '/tmp',
+	to   => 'tmp-bkp',
+}
+
+backup::simple {'backup of /tmp/vagrant-shell file':
+	from => '/tmp/vagrant-shell',
+	to   => 'vagrant-shell',
+}

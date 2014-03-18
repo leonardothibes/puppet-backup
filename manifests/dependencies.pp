@@ -4,7 +4,7 @@ class backup::dependencies
 	if !defined(Package[$packages]) {
 		package {$packages:
 			ensure => present,
-			name   => $backup::params::compactors,
+			name   => $backup::params::compressors,
 		}
 	}
 

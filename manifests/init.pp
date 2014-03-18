@@ -1,6 +1,5 @@
-class backup(
-
-) inherits backup::params {
-
+class backup
+{
+	include backup::params
 	include backup::dependencies
 }

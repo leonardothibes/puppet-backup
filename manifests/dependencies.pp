@@ -7,15 +7,4 @@ class backup::dependencies
 			name   => $backup::params::compressors,
 		}
 	}
-
-	$directory = 'backup::dependencies::directory'
-	if !defined(File[$directory]) {
-		file {$directory:
-			ensure => directory,
-			owner  => root,
-			group  => root,
-			mode   => 0755,
-			path   => $backup::params::endpoint,
-		}
-	}
 }

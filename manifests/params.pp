@@ -1,6 +1,5 @@
 class backup::params
 {
-	$endpoint = "/backups"
 	$envpath  = [
 		'/bin',
 		'/sbin',

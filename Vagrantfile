@@ -80,6 +80,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", inline: "
 	apt-get update > /dev/null
 	[ -d /etc/puppet/modules/util ]    || puppet module install leonardothibes-util
+	[ -d /etc/puppet/modules/wget ]    || puppet module install leonardothibes-wget
 	[ -d /etc/puppet/modules/crontab ] || puppet module install leonardothibes-crontab
   "
   config.vm.provision :puppet do |puppet|

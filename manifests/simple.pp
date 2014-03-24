@@ -7,7 +7,7 @@ define backup::simple(
     $weekday    = '*',
     $user       = 'root',
 	$group      = 'root',
-	$mode       = 0644,
+	$chmod      = 0644,
 	$compressor = 'tar.gz',
 	$dateformat = "%Y-%m-%d",
 	$from,
@@ -52,6 +52,18 @@ define backup::simple(
 			command => "rm -Rf ${endpoint}",
 			onlyif  => "[ -f ${endpoint}.${compressor} ]"
 			# Step-3: clean
+		}->util::chown {"backup::simple::${title}::step-4":
+			# Step-4: chown
+			file      => $to,
+			user      => $user,
+			group     => $group,
+			recursive => true,
+			# Step-4: chown
+		}->util::chmod {"backup::simple::${title}::step-5":
+			# Step-5: chmod
+			file => "${endpoint}.${compressor}",
+			mode => $chmod,
+			# Step-5: chmod
 		}
 	} else {
 		exec {"backup::simple::${to}::absent":

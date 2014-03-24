@@ -10,11 +10,13 @@
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
 backup::simple {'backup of /tmp directory':
-	from => '/tmp',
-	to   => 'tmp-bkp',
+	from  => '/tmp',
+	to    => '/backups/tmp',
+	user  => 'vagrant',
+	group => 'backup',
 }
 
-backup::simple {'backup of /tmp/vagrant-shell file':
-	from => '/tmp/vagrant-shell',
-	to   => 'vagrant-shell',
-}
+#backup::simple {'backup of /tmp/vagrant-shell file':
+#	from => '/tmp/vagrant-shell',
+#	to   => 'shell/shell-scripts',
+#}

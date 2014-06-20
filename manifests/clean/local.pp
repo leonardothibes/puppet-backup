@@ -1,4 +1,0 @@
-class backup::clean::local
-{
-
-}

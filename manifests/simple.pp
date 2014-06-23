@@ -1,13 +1,13 @@
 define backup::simple(
 	$ensure     = present,
-    $minute     = '*',
-    $hour       = '*',
-    $monthday   = '*',
-    $month      = '*',
-    $weekday    = '*',
-    $user       = 'root',
+	$minute     = '*',
+	$hour       = '*',
+	$monthday   = '*',
+	$month      = '*',
+	$weekday    = '*',
+	$user       = 'root',
 	$group      = 'root',
-	$chmod      = 0644,
+	$mode       = 0644,
 	$compressor = 'tar.gz',
 	$dateformat = "%Y-%m-%d",
 	$log        = '/dev/null',
@@ -22,10 +22,35 @@ define backup::simple(
 	}
 	Exec {path => $backup::params::envpath}
 	if $ensure == 'present' {
-		crontab::job {$name:
-			ensure => present,
-			
+		
+		# Backup script
+		$script = "${backup::params::bkpdir}/${name}.sh"
+		
+		# Backup script content
+		file {"backup::script::${name}":
+			ensure  => present,
+			owner   => root,
+			group   => root,
+			mode    => 0755,
+			path    => $script,
+			content => template('backup/simple.sh.erb'),
 		}
+		# Backup script content
+		
+		# Crontab job
+		crontab::job {"backup-${name}":
+			ensure   => present,
+			minute   => $minute,
+			hour     => $hour,
+			monthday => $monthday,
+			month    => $month,
+			weekday  => $weekday,
+			command  => $script,
+			stdin    => $log,
+			stderr   => $log,
+		}
+		# Crontab job
+		
 	} else {
 		crontab::job {$name: ensure => absent}
 	}

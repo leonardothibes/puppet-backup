@@ -82,6 +82,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	[ -d /etc/puppet/modules/wget    ] || puppet module install leonardothibes-wget
 	[ -d /etc/puppet/modules/s3cmd   ] || puppet module install leonardothibes-s3cmd
 	[ -d /etc/puppet/modules/crontab ] || puppet module install leonardothibes-crontab
+	[ -d /etc/puppet/modules/s3cmd   ] || puppet module install leonardothibes-s3cmd
+	[ -d /etc/puppet/modules/util    ] || puppet module install leonardothibes-util
+	[ -d /etc/puppet/modules/stdlib  ] || puppet module install puppetlabs-stdlib
   "
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "tests"

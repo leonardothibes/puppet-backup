@@ -8,5 +8,7 @@ source 'git://github.com/leonardothibes/puppet-util.git'
 project_page 'http://github.com/leonardothibes/puppet-util'
 
 ## Add dependencies, if any:
-dependency 'leonardothibes/s3cmd  ', '>= 1.0.0'
+dependency 'leonardothibes/s3cmd'  , '>= 1.0.0'
 dependency 'leonardothibes/crontab', '>= 1.0.0'
+dependency 'leonardothibes/util'   , '>= 1.0.0'
+dependency 'puppetlabs/stdlib'     , '>= 3.2.1'

@@ -1,5 +1,6 @@
 class backup::params
 {
+	$bkpdir   = '/var/lib/backup-scripts'
 	$envpath  = [
 		'/bin',
 		'/sbin',

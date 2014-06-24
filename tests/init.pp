@@ -9,6 +9,7 @@
 # Learn more about module testing here:
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
+include vim
 backup::simple {'temp':
 	from   => '/tmp',
 	to     => '/backups/tmp',

@@ -79,6 +79,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder ".", "/etc/puppet/modules/backup"
   config.vm.provision "shell", inline: "
 	apt-get update > /dev/null
+	[ -d /etc/puppet/modules/vim     ] || puppet module install leonardothibes-vim
 	[ -d /etc/puppet/modules/wget    ] || puppet module install leonardothibes-wget
 	[ -d /etc/puppet/modules/s3cmd   ] || puppet module install leonardothibes-s3cmd
 	[ -d /etc/puppet/modules/crontab ] || puppet module install leonardothibes-crontab
